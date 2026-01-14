@@ -1,61 +1,70 @@
-# Claude Code Settings
+# Agent Settings
 
-This repository contains my personal Claude Code configuration files for consistent development workflow across projects.
+A unified configuration repository for managing AI assistant behavior across multiple platforms (Claude, Codex, Gemini).
 
-## Structure
+## Overview
+
+This repository centralizes the rules and instructions for AI coding assistants, ensuring consistent behavior across different AI platforms used in development workflows.
+
+## Directory Structure
 
 ```
-.claude/
-├── commands/              # Custom slash commands
-│   ├── commit_message_suggestion.md
-│   └── diff_summary.md
-└── rules/                 # Project-wide rules
-    └── commit_message.md
+Agent_Setting/
+├── .claude/                    # Claude AI configuration
+│   ├── CLAUDE.md               # Main instructions
+│   ├── commands/               # Custom command definitions
+│   │   ├── commit_message_suggestion.md
+│   │   └── diff_summary.md
+│   └── rules/                  # Rule definitions
+│       └── commit_message.md
+├── .codex/                     # Codex configuration
+│   └── AGENTS.md
+├── .gemini/                    # Gemini configuration
+│   └── GEMINI.md
+└── README.md
 ```
 
-## Commands
+## Common Rules
 
-### `/commit_message_suggestion`
-Reviews recent code diffs and suggests an appropriate commit message following the gitmoji format defined in the rules.
+All AI assistants in this repository follow these shared guidelines:
 
-### `/diff_summary`
-Analyzes recent code changes and provides:
-- Summary of what changed
-- Impacted modules/files
-- Potential risks/regressions
-- Suggested follow-up checks
+| Rule | Description |
+|------|-------------|
+| **Language** | Responses should be in Japanese by default |
+| **Exceptions** | English thinking allowed for complex problems; commit messages in English |
+| **Code Style** | Tab and indent size: 4 spaces |
+| **Git Policy** | Never execute git operations without explicit user request |
 
-## Rules
+## Commit Message Format
 
-### Commit Message Format
-All commits follow the gitmoji format:
+All commit messages follow the [Gitmoji](https://gitmoji.dev) standard:
+
 ```
 [emoji] English commit message
 ```
 
-Common emojis used:
-- ✨ `:sparkles:` - New feature
-- 🐛 `:bug:` - Bug fix
-- 📝 `:memo:` - Documentation
-- 🎨 `:art:` - Code style/formatting
-- ♻️ `:recycle:` - Refactoring
-- 🔧 `:wrench:` - Configuration
-- 🚀 `:rocket:` - Performance improvement
-- 🥅 `:goal_net:` - Error handling
-- ✅ `:white_check_mark:` - Tests
+### Common Emojis
 
-## Usage
+| Emoji | Code | Usage |
+|-------|------|-------|
+| ✨ | `:sparkles:` | New feature |
+| 🐛 | `:bug:` | Bug fix |
+| 📝 | `:memo:` | Documentation |
+| 🎨 | `:art:` | Code style/formatting |
+| ♻️ | `:recycle:` | Refactoring |
+| 🔧 | `:wrench:` | Configuration |
+| 🚀 | `:rocket:` | Performance improvement |
+| 🥅 | `:goal_net:` | Error handling |
+| ✅ | `:white_check_mark:` | Tests |
 
-To use these settings in your projects, copy the `.claude/` directory to your project root:
+## Custom Commands
 
-```bash
-# Clone this repository
-git clone https://github.com/yourusername/Claude_Settings.git
+### commit_message_suggestion
+Analyzes code differences and suggests appropriate commit messages following the Gitmoji format.
 
-# Copy to your project
-cp -r Claude_Settings/.claude /path/to/your/project/
-```
+### diff_summary
+Provides a concise summary of code changes in the current working directory.
 
-## Safety
+## License
 
-All commands are configured to **never** automatically perform git operations (commit, push, etc.) without explicit user request.
+This project is for personal use.
